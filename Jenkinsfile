@@ -1,16 +1,12 @@
 pipeline {
     agent any
 
-    environment {
-        NODEJS_VERSION = '14.x'
-    }
-
     tools {
-        nodejs "${NODEJS_VERSION}"
+        nodejs 'NodeJS 14.x'
     }
 
     stages {
-        stage('Clone Test Repository') {
+        stage('Clone Repository') {
             steps {
                 git url: 'https://github.com/JawadJisan/Simple-CI-CD.git', branch: 'main'
             }
@@ -18,25 +14,19 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                script {
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                script {
-                    sh 'npx playwright test'
-                }
+                sh 'npx playwright test'
             }
         }
 
         stage('Generate Report') {
             steps {
-                script {
-                    sh 'npx playwright show-report'
-                }
+                sh 'npx playwright show-report'
                 archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
             }
         }
