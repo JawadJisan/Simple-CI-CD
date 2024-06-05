@@ -1,0 +1,13 @@
+{
+  "name": "your-test-cases-repo",
+  "version": "1.0.0",
+  "description": "Playwright test cases",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.16.0"
+  },
+  "devDependencies": {}
+}
