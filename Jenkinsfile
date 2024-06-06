@@ -11,5 +11,30 @@ pipeline {
                 }
             }
         }
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing dependencies...'
+                sh 'npm install'
+                echo 'Finished Installing dependencies...'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                echo 'Running tests...'
+                sh 'npx playwright test'
+                echo 'Done Running tests...'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build successful!'
+            // Add any post-build actions here
+        }
+        failure {
+            echo 'Build failed :('
+            // Add any actions to take on failure here
+        }
     }
 }
