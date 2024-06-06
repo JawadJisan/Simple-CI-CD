@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/yourusername/yourrepository.git'
+                git url: 'https://github.com/JawadJisan/Simple-CI-CD.git'
             }
         }
         stage('Build') {
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm test' // Or any other test command
+                sh 'npx playwright test' // Or any other test command
             }
         }
         stage('Report') {
