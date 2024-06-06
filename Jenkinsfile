@@ -1,79 +1,25 @@
-// pipeline {
-//     agent any
-
-//     tools {
-//         nodejs 'NodeJS 14.x'
-//     }
-
-//     stages {
-//         stage('Clone Repository') {
-//             steps {
-//                 git url: 'https://github.com/JawadJisan/Simple-CI-CD.git', branch: 'main'
-//             }
-//         }
-
-//         stage('Install Dependencies') {
-//             steps {
-//                 bat 'npm install'
-//             }
-//         }
-
-//         stage('Run Tests') {
-//             steps {
-//                 bat 'npx playwright test'
-//             }
-//         }
-
-//         stage('Generate Report') {
-//             steps {
-//                 bat 'npx playwright show-report'
-//                 archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-//             }
-//         }
-//     }
-
-//     post {
-//         always {
-//             cleanWs()
-//         }
-//         success {
-//             echo 'Tests passed!'
-//         }
-//         failure {
-//             echo 'Tests failed!'
-//         }
-//     }
-// }
 pipeline {
     agent any
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git url: 'https://github.com/yourusername/yourrepository.git'
             }
         }
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
-                bat 'echo %PATH%'
-                bat 'where cmd'
-                bat 'npm install'
+                sh 'npm install' // Or any other build command
             }
         }
-        stage('Run Tests') {
+        stage('Test') {
             steps {
-                bat 'npm test'
+                sh 'npm test' // Or any other test command
             }
         }
-        stage('Generate Report') {
+        stage('Report') {
             steps {
-                bat 'npm run generate-report'
+                // Generate test reports
             }
-        }
-    }
-    post {
-        always {
-            cleanWs()
-            echo 'Tests failed!'
         }
     }
 }
