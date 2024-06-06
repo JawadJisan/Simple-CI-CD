@@ -19,6 +19,7 @@ pipeline {
         stage('Report') {
             steps {
                 // Generate test reports
+                echo 'Generating test reports...'
             }
         }
     }
