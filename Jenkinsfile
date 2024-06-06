@@ -3,23 +3,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/JawadJisan/Simple-CI-CD.git'
+                // Checkout the repository
+                git(url: 'https://github.com/JawadJisan/Simple-CI-CD.git', branch: 'main')
             }
         }
         stage('Build') {
             steps {
-                sh 'npm install' // Or any other build command
+                // Build your project
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'npx playwright test' // Or any other test command
+                // Run your tests
+                sh 'npx playwright test'
             }
         }
         stage('Report') {
             steps {
                 // Generate test reports
-                echo 'Generating test reports...'
             }
         }
     }
