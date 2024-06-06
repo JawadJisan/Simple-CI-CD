@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo 'Cloning repository...'
-                    git url: 'https://github.com/JawadJisan/Simple-CI-CD.git'
+                    git branch: 'main', url: 'https://github.com/JawadJisan/Simple-CI-CD.git'
                     echo 'Finished cloning repository.'
                 }
             }
