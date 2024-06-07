@@ -24,6 +24,7 @@ pipeline {
                 sh 'npx playwright test'
                 echo 'Done Running tests...'
                 echo 'Done Running tests 2nd times...'
+                echo 'Done Running tests 3rd times...'
             }
         }
     }
