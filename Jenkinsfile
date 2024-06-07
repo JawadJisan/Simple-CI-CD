@@ -23,6 +23,7 @@ pipeline {
                 echo 'Running tests...'
                 sh 'npx playwright test'
                 echo 'Done Running tests...'
+                echo 'Done Running tests 2nd times...'
             }
         }
     }
